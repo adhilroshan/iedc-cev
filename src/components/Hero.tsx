@@ -8,6 +8,7 @@ function Hero() {
       <div className="absolute w-screen h-screen z-0 ">
         <Image
           src="/assets/Section.png"
+          fill
           className="w-full h-full object-cover"
           alt="img"
         />

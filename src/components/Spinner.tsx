@@ -1,10 +1,10 @@
 import Image from "next/image";
-import loader from "./loading.gif";
+import loader from "../../public/infinite-spinner.svg";
 
 const Spinner = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <Image src={loader} alt="loading.." />
+      <Image src={loader} priority={true} alt="loading.." />
     </div>
   );
 };

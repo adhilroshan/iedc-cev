@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { UserAuth } from "@/context/AuthContext";
 import Spinner from "@/components/Spinner";
 import { User } from "firebase/auth";
+import { doc, collection, addDoc, setDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "@/firebase/config";
 
 const Onboarding = () => {
   const userAuth = UserAuth();
@@ -11,6 +13,7 @@ const Onboarding = () => {
   const googleSignIn = userAuth?.googleSignIn;
   const logOut = userAuth?.logOut;
   const [loading, setLoading] = useState(true);
+  const [onboarded, setOnboarded] = useState(false);
 
   const handleSignIn = async () => {
     try {
@@ -27,17 +30,30 @@ const Onboarding = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
+    async function isOnboarded() {
+      const docRef = doc(db, "users", user?.uid!);
+
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap);
+      if (docSnap.exists()) {
+        setOnboarded(true);
+      } else {
+        setOnboarded(false);
+      }
+    }
+
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
     };
+
     checkAuthentication();
+    isOnboarded();
   }, [user]);
 
   return (
-    <div className="p-4">
+    <div className="">
       {loading ? (
         <Spinner />
       ) : user ? (
@@ -45,9 +61,14 @@ const Onboarding = () => {
         //   Welcome, {user.displayName} - you are logged in to the profile page -
         //   a protected route.
         // </p>
-
         <div className="bg-white">
-          <Form />
+          {!onboarded ? (
+            <Form />
+          ) : (
+            <div className="w-screen h-screen flex justify-center items-center">
+              <p className=" font-bold text-5xl">Already Onboarded</p>
+            </div>
+          )}
         </div>
       ) : (
         // <p>You must be logged in to view this page - protected route.</p>
