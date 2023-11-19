@@ -15,7 +15,9 @@ const Onboarding = () => {
   const [loading, setLoading] = useState(true);
   const [onboarded, setOnboarded] = useState(false);
 
-  const handleSignIn = async () => {
+  const handleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
     try {
       await googleSignIn!();
     } catch (error) {
