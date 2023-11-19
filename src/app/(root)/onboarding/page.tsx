@@ -6,22 +6,23 @@ import Spinner from "@/components/Spinner";
 import { User } from "firebase/auth";
 
 const Onboarding = () => {
-  const { user, googleSignIn, logOut } = UserAuth();
+  const userAuth = UserAuth();
+  const user = userAuth?.user;
+  const googleSignIn = userAuth?.googleSignIn;
+  const logOut = userAuth?.logOut;
   const [loading, setLoading] = useState(true);
 
   const handleSignIn = async () => {
     try {
-      await googleSignIn();
+      await googleSignIn!();
     } catch (error) {
       console.log(error);
     }
   };
 
-  
-
   const handleSignOut = async () => {
     try {
-      await logOut();
+      await logOut!();
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +45,7 @@ const Onboarding = () => {
         //   Welcome, {user.displayName} - you are logged in to the profile page -
         //   a protected route.
         // </p>
-        
+
         <div className="bg-white">
           <Form />
         </div>
