@@ -31,17 +31,17 @@ const Onboarding = () => {
     }
   };
   useEffect(() => {
-    async function isOnboarded() {
-      const docRef = doc(db, "users", user?.uid!);
+    // async function isOnboarded() {
+    //   const docRef = doc(db, "users", user?.uid!);
 
-      const docSnap = await getDoc(docRef);
-      console.log(docSnap);
-      if (docSnap.exists()) {
-        setOnboarded(true);
-      } else {
-        setOnboarded(false);
-      }
-    }
+    //   const docSnap = await getDoc(docRef);
+    //   console.log(docSnap);
+    //   if (docSnap.exists()) {
+    //     setOnboarded(true);
+    //   } else {
+    //     setOnboarded(false);
+    //   }
+    // }
 
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
@@ -49,7 +49,7 @@ const Onboarding = () => {
     };
 
     checkAuthentication();
-    isOnboarded();
+    // isOnboarded();
   }, [user]);
 
   return (
@@ -62,13 +62,14 @@ const Onboarding = () => {
         //   a protected route.
         // </p>
         <div className="bg-white">
-          {!onboarded ? (
+          {/* {!onboarded ? (
             <Form />
           ) : (
             <div className="w-screen h-screen flex justify-center items-center">
               <p className=" font-bold text-5xl">Already Onboarded</p>
             </div>
-          )}
+          )} */}
+          <Form />
         </div>
       ) : (
         // <p>You must be logged in to view this page - protected route.</p>
