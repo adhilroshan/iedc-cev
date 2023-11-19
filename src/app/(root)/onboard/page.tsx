@@ -6,9 +6,9 @@ import Spinner from "@/components/Spinner";
 import { User } from "firebase/auth";
 import { doc, collection, addDoc, setDoc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
-const Onboarding = () => {
+const Onboard = () => {
   const router = useRouter();
   const userAuth = UserAuth();
   const user = userAuth?.user;
@@ -33,27 +33,30 @@ const Onboarding = () => {
     }
   };
   useEffect(() => {
-    async function isOnboarded() {
-      const docRef = doc(db, "users", user?.uid!);
-
-      const docSnap = await getDoc(docRef);
-      console.log(docSnap);
-      if (docSnap.exists()) {
-        setOnboarded(true);
-        router.push("/onboard/complete");
-      } else {
-        setOnboarded(false);
-      }
-    }
-
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
       setLoading(false);
     };
 
     checkAuthentication();
-    isOnboarded();
   }, [user]);
+  useEffect(() => {
+    async function isOnboarded() {
+      if (user) {
+        const docRef = doc(db, "users", user.uid);
+
+        const docSnap = await getDoc(docRef);
+        console.log(docSnap);
+        if (docSnap.exists()) {
+          setOnboarded(true);
+          router.push("/onboard/complete");
+        } else {
+          setOnboarded(false);
+        }
+      }
+    }
+    isOnboarded();
+  }, [router, user]);
 
   return (
     <div className="">
@@ -108,4 +111,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default Onboard;
