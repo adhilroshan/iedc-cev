@@ -6,8 +6,10 @@ import Spinner from "@/components/Spinner";
 import { User } from "firebase/auth";
 import { doc, collection, addDoc, setDoc, getDoc } from "firebase/firestore";
 import { auth, db } from "@/firebase/config";
+import { useRouter } from "next/router";
 
 const Onboarding = () => {
+  const router = useRouter();
   const userAuth = UserAuth();
   const user = userAuth?.user;
   const googleSignIn = userAuth?.googleSignIn;
@@ -15,9 +17,7 @@ const Onboarding = () => {
   const [loading, setLoading] = useState(true);
   const [onboarded, setOnboarded] = useState(false);
 
-  const handleSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
+  const handleSignIn = async () => {
     try {
       await googleSignIn!();
     } catch (error) {
@@ -33,17 +33,18 @@ const Onboarding = () => {
     }
   };
   useEffect(() => {
-    // async function isOnboarded() {
-    //   const docRef = doc(db, "users", user?.uid!);
+    async function isOnboarded() {
+      const docRef = doc(db, "users", user?.uid!);
 
-    //   const docSnap = await getDoc(docRef);
-    //   console.log(docSnap);
-    //   if (docSnap.exists()) {
-    //     setOnboarded(true);
-    //   } else {
-    //     setOnboarded(false);
-    //   }
-    // }
+      const docSnap = await getDoc(docRef);
+      console.log(docSnap);
+      if (docSnap.exists()) {
+        setOnboarded(true);
+        router.push("/onboard/complete");
+      } else {
+        setOnboarded(false);
+      }
+    }
 
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 50));
@@ -51,7 +52,7 @@ const Onboarding = () => {
     };
 
     checkAuthentication();
-    // isOnboarded();
+    isOnboarded();
   }, [user]);
 
   return (
@@ -64,13 +65,6 @@ const Onboarding = () => {
         //   a protected route.
         // </p>
         <div className="bg-white">
-          {/* {!onboarded ? (
-            <Form />
-          ) : (
-            <div className="w-screen h-screen flex justify-center items-center">
-              <p className=" font-bold text-5xl">Already Onboarded</p>
-            </div>
-          )} */}
           <Form />
         </div>
       ) : (

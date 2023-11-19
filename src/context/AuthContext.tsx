@@ -32,8 +32,8 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithRedirect(auth, provider).then((result) => {
-      console.log(result);
+    await signInWithPopup(auth, provider).then((result) => {
+      console.log(result.user);
     });
   };
 
