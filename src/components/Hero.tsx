@@ -1,11 +1,12 @@
 import React from "react";
 import HeroImg from "./HeroImg";
+import Image from "next/image";
 
 function Hero() {
   return (
     <div className="flex w-screen h-screen justify-between ">
       <div className="absolute w-screen h-screen z-0 ">
-        <img
+        <Image
           src="/assets/Section.png"
           className="w-full h-full object-cover"
           alt="img"
