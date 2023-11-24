@@ -16,6 +16,16 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+          raleway: 'Raleway, sans-serif',
+          poppins: 'Poppins, sans-serif',
+          montserrat: 'Montserrat, sans-serif',
+      },
+
+       backgroundImage: {
+        'hero-pattern': "url('/assets/img/hero-pattern.webp')",
+        'footer-texture': "url('/img/footer-texture.png')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

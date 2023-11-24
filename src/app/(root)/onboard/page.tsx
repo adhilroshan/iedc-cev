@@ -49,7 +49,7 @@ const Onboard = () => {
         console.log(docSnap);
         if (docSnap.exists()) {
           setOnboarded(true);
-          router.push("/onboard/complete");
+          router.push("/profile");
         } else {
           setOnboarded(false);
         }

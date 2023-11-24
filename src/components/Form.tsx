@@ -88,7 +88,7 @@ export default function Form() {
         username: generateFromEmail(user.email!),
         name: user.displayName,
         email: user.email,
-        photoUrl: user.photoURL,
+        photoUrl: user.photoURL?.replace("s96-c/photo.jpg", "s400-c/photo.jpg"),
         ...data,
       });
       console.log("Document written with ID: ", docRef.id);
@@ -416,21 +416,6 @@ export default function Form() {
                     {errors.interests.message}
                   </p>
                 )}
-
-                {/* <div className="mt-2">
-                  <input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
-                  />
-                  {errors.email?.message && (
-                    <p className="mt-2 text-sm text-red-400">
-                      {errors.email.message}
-                    </p>
-                  )}
-                </div> */}
               </div>
             </div>
           </motion.div>
