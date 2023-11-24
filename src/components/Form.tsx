@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 type Inputs = z.infer<typeof FormDataSchema>;
 
@@ -37,6 +38,8 @@ const steps = [
 ];
 
 export default function Form() {
+  const router = useRouter();
+
   // const { user } = UserAuth()
   // const [loading, setLoading] = useState(true)
 
@@ -110,6 +113,10 @@ export default function Form() {
     if (currentStep < steps.length - 1) {
       if (currentStep === steps.length - 2) {
         await handleSubmit(processForm)();
+        // add a time out then redirect from to main page
+        setTimeout(() => {
+          router.push("/profile");
+        }, 2000);
       }
       setPreviousStep(currentStep);
       setCurrentStep((step) => step + 1);
