@@ -24,7 +24,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <Group />
+      {/* <Group /> */}
       {/* <YourReactComponent /> */}
     </main>
   );
