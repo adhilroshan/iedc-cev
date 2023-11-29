@@ -91,7 +91,7 @@ export default function Form() {
         username: generateFromEmail(user.email!),
         name: user.displayName,
         email: user.email,
-        photoUrl: user.photoURL?.replace("s96-c/photo.jpg", "s400-c/photo.jpg"),
+        photoUrl: user.photoURL?.replaceAll("s96-c", "s400-c"),
         ...data,
       });
       console.log("Document written with ID: ", docRef.id);
@@ -131,7 +131,7 @@ export default function Form() {
   };
 
   return (
-    <section className="absolute inset-0 flex flex-col justify-between p-24">
+    <section className="absolute inset-0 flex flex-col justify-between p-14 md:p-24 ">
       {/* steps */}
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
@@ -200,9 +200,9 @@ export default function Form() {
                     className="block px-3 w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
                     {...register("course", { required: true })}
                   >
-                    {/* <option className="font-bold"  defaultValue={}> */}
-                    {/* Select your course */}
-                    {/* </option> */}
+                    <option disabled selected className="font-bold">
+                      Select your course
+                    </option>
                     <option value="Computer Science">Computer Science</option>
                     <option value="Electronics & Communication">
                       Electronics & Communication
@@ -278,7 +278,7 @@ export default function Form() {
               <div className="sm:col-span-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-base font-medium leading-6 text-gray-900"
                 >
                   Fields of Interest
                 </label>
@@ -416,6 +416,37 @@ export default function Form() {
                     >
                       Cloud Computing
                     </label>
+                  </div>
+                  {/* <div className="flex m-2 gap-2">
+                    <label
+                      htmlFor="other"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Other
+                    </label>
+                    <input
+                      type="text"
+                      id="other"
+                      {...register("interests.other")}
+                      content="Other"
+                      placeholder="Other"
+                    />
+                  </div> */}
+                </div>
+                <div className="sm:col-span-3">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Other
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      id="Iother"
+                      {...register("interests.other")}
+                      className="block w-full px-3  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                    />
                   </div>
                 </div>
                 {errors.interests?.message && (
@@ -577,7 +608,7 @@ export default function Form() {
       </form>
 
       {/* Navigation */}
-      <div className="mt-8 pt-5">
+      <div className="py-5">
         <div className="flex justify-between">
           <button
             type="button"

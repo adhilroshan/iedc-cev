@@ -12,9 +12,11 @@ export const FormDataSchema = z.object({
     blockchain: z.boolean(),
     cloud: z.boolean(),
     design: z.boolean(),
-    management: z.boolean()
-    // other: z.boolean()
+    management: z.boolean(),
+    other: z.string()
   }),
+
+
   phoneNumber:z.string(),
   // email: z.string().min(1, 'Email is required').email('Invalid email address'),
   country: z.string().min(1, 'Country is required'),

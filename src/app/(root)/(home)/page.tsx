@@ -1,5 +1,4 @@
 import Cursor from "@/components/Cursor";
-import YourReactComponent from "@/components/Demo";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
