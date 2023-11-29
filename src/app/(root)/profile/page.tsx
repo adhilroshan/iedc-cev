@@ -46,7 +46,7 @@ const Page = () => {
   const handleSignOut = async () => {
     try {
       await logOut!();
-      router.push("/onboard");
+      router.push("/join");
     } catch (error) {
       console.log(error);
     }
@@ -104,14 +104,14 @@ const Page = () => {
         } else {
           // doc.data() will be undefined in this case
           console.log("doc.data() Inside");
-          router.push("/onboard");
+          router.push("/join");
 
           console.log("No such document!");
         }
       } else {
         console.log("doc.data() outside");
 
-        router.push("/onboard");
+        router.push("/join");
       }
     }
     // setTimeout(() => {

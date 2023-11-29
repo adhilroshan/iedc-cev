@@ -3,6 +3,7 @@ import React from "react";
 import HeroImg from "./HeroImg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 function Hero() {
   const up = {
@@ -49,9 +50,9 @@ function Hero() {
           expedita blanditiis a facere facilis ut consectetur possimus
           necessitatibus molestias.
         </p>
-        <button className="bg-purple-400 rounded-sm w-fit px-7 py-2">
+        <Link href="/join" className="bg-purple-400 rounded-sm w-fit px-7 py-2">
           Join Us
-        </button>
+        </Link>
       </div>
       <div className="w-full gap-3 mx-10  overflow-hidden z-10  flex justify-end flex-wrap  ">
         <motion.div
