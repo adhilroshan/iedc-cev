@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import HeroImg from "../HeroImg";
+// import HeroImg from "../HeroImg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
