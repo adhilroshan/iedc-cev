@@ -3,7 +3,7 @@ import { useInView, motion } from "framer-motion";
 import { useRef } from "react";
 import { slideUp, opacity } from "./animation";
 import Rounded from "../../common/RoundedButton";
-export default function index() {
+export default function Index() {
     const phrase =
         "IEDC aims to promote entrepreneurship among students by conducting various activities such as entrepreneurship awareness camps, entrepreneurship development programs, faculty development programs, and networking events.";
     const description = useRef(null);
