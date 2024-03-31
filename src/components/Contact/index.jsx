@@ -46,8 +46,8 @@ export default function index() {
                             <p>+31 6 27 84 74 30</p>
                         </Rounded> */}
                 </div>
-                {/* <div className={styles.info}>
-                    <div>
+                <div className={styles.info}>
+                    {/* <div>
                         <span>
                             <h3>Version</h3>
                             <p>2022 © Edition</p>
@@ -73,8 +73,8 @@ export default function index() {
                         <Magnetic>
                             <p>Linkedin</p>
                         </Magnetic>
-                    </div>
-                </div> */}
+                    </div> */}
+                </div>
             </div>
         </motion.div>
     )

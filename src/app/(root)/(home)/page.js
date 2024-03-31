@@ -32,7 +32,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="border outline">
+    <main className="">
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
