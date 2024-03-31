@@ -10,6 +10,7 @@ import SlidingImages from '@/components/SlidingImages';
 import Contact from '@/components/Contact';
 import Hero from "@/components/Hero";
 import ParallaxScroll from "@/components/ParallaxScroll";
+import Marquee from '@/components/Marquee';
 
 
 export default function Home() {
@@ -39,6 +40,7 @@ export default function Home() {
       <Hero />
       {/* <Landing /> */}
       <Description />
+      <Marquee />
       <ParallaxScroll />
       <Projects />
       <SlidingImages />

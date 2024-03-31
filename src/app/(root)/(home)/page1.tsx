@@ -2,7 +2,7 @@
 import Hero from "@/components/Hero";
 import Header from "@/components/Header";
 import Image from "next/image";
-import Marquee from "@/components/old/Marquee";
+import Marquee from "@/components/Marquee";
 
 export default function Home() {
   return (

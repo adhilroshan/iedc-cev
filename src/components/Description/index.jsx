@@ -34,7 +34,7 @@ export default function Index() {
                 </motion.p>
                 <div data-scroll data-scroll-speed={0.1}>
                     <Rounded className={styles.button}>
-                        <p>About us</p>
+                        <p>Join Us</p>
                     </Rounded>
                 </div>
             </div>
